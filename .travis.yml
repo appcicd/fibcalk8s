@@ -22,3 +22,16 @@ after_success:
   - docker push appcicd/fibcal-nginx
   - docker push appcicd/fibcal-server
   - docker push appcicd/fibcal-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: fabcal
+  env:  Fabcal-env
+  bucket_name: "elasticbeanstalk-us-west-1-524167333514"
+  bucket_path: fabcal
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
