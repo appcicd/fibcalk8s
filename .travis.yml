@@ -13,8 +13,10 @@ after_success:
   - docker build -t appcicd/fibcal-nginx ./nginx
   - docker build -t appcicd/fibcal-server ./server
   - docker build -t appcicd/fibcal-worker ./worker
+ 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
   # Take those images and push them to docker hub
   - docker push appcicd/fibcal-client
   - docker push appcicd/fibcal-nginx
